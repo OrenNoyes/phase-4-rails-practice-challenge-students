@@ -1,36 +1,34 @@
 class StudentsController < ApplicationController
-end
-
-def index 
+  def index
     students = Student.all
     render json: students
-end 
+  end
 
-def show 
+  def show
     student = Student.find(params[:id])
     render json: student
-end 
+  end
 
-def create
+  def create
     student = Student.create(student_params)
     render json: student, status: :created
-end 
+  end
 
-def update 
+  def update
     student = Student.find(params[:id])
     student.update(student_params)
     render json: student, status: :ok
-end 
+  end
 
-def destroy
+  def destroy
     student = Student.find(params[:id])
     student.destroy
     head :no_content, status: :destroyed
+  end
 
-end 
+  private
 
-private 
-
-def student_params
+  def student_params
     params.permit(:name, :major, :age, :instructor_id)
-end 
+  end
+end

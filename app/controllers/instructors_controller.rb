@@ -7,7 +7,7 @@ class InstructorsController < ApplicationController
 
     def show 
         instructor = Instructor.find(params[:id])
-        render json: instructors
+        render json: instructor
     end 
 
     def create
